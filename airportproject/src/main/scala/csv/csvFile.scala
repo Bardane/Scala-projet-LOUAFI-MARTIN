@@ -5,6 +5,5 @@ class csvFile(csvPath: String) {
 
   def parseCSV: Iterator[String] = Source.fromFile(csvPath).getLines
 
-  def readCSV:Unit =
-    parseCSV.foreach(println)
+  def readCSV: Unit = parseCSV.foreach(println)
 }
