@@ -70,7 +70,7 @@ libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % 
 //       organization := "ch.epfl.scala",
 //       scalaVersion := "2.13.8"
 //     )),
-//     name := "hello-world"
+//     name := "airportProject"
 //   )
 
 // To learn more about multi-project builds, head over to the official sbt

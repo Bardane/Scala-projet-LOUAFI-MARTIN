@@ -1,1 +1,13 @@
-[debug] Jar uptodate: C:\Users\adaml\OneDrive - Efrei\Functional_Prog\Scala-projet-LOUAFI-MARTIN\airportproject\target\scala-2.13\hello-world_2.13-1.0.jar
+[debug] Packaging C:\Users\adaml\OneDrive - Efrei\Functional_Prog\Scala-projet-LOUAFI-MARTIN\airportproject\target\scala-2.13\airportproject_2.13-1.0.jar ...
+[debug] Input file mappings:
+[debug] 	csv
+[debug] 	  C:\Users\adaml\OneDrive - Efrei\Functional_Prog\Scala-projet-LOUAFI-MARTIN\airportproject\target\scala-2.13\classes\csv
+[debug] 	csv\csvFile.class
+[debug] 	  C:\Users\adaml\OneDrive - Efrei\Functional_Prog\Scala-projet-LOUAFI-MARTIN\airportproject\target\scala-2.13\classes\csv\csvFile.class
+[debug] 	Main$.class
+[debug] 	  C:\Users\adaml\OneDrive - Efrei\Functional_Prog\Scala-projet-LOUAFI-MARTIN\airportproject\target\scala-2.13\classes\Main$.class
+[debug] 	Main$delayedInit$body.class
+[debug] 	  C:\Users\adaml\OneDrive - Efrei\Functional_Prog\Scala-projet-LOUAFI-MARTIN\airportproject\target\scala-2.13\classes\Main$delayedInit$body.class
+[debug] 	Main.class
+[debug] 	  C:\Users\adaml\OneDrive - Efrei\Functional_Prog\Scala-projet-LOUAFI-MARTIN\airportproject\target\scala-2.13\classes\Main.class
+[debug] Done packaging.
