@@ -26,8 +26,8 @@ O.1) In 2.2 make the name matching partial/fuzzy. e.g. entering zimb will result
 O.2) Use database (in memory for the exercice like h2,sqlite) (4pt)  
 O.3) Do a GUI (6pt)  
 O.4) provide a rest API (4pt)  
-0.5) Use Future to improve the speed of your app (2pt)  
-0.6) Same as 0.5 with parallel collection (1pt)  
+O.5) Use Future to improve the speed of your app (2pt)  
+O.6) Same as 0.5 with parallel collection (1pt)  
 O.7) write the project using scala 3 (3pt)  
 
 You may theorically have more than 20/20, though the CTI rules will block it to 20/20
