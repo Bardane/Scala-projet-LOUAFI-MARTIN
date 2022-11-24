@@ -1,0 +1,10 @@
+[debug] > Exec(compile, None, None)
+[debug] Evaluating tasks: Compile / compile
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[info] compiling 2 Scala sources to C:\Users\adaml\OneDrive - Efrei\Functional_Prog\Scala-projet-LOUAFI-MARTIN\airportproject\target\scala-2.13\classes ...
+[warn] 1 deprecation (since 2.13.3); re-run with -deprecation for details
+[warn] one warning found
+[info] done compiling
+[debug] Forcing garbage collection...
+[success] Total time: 2 s, completed 20 Nov 2022, 17:20:41
+[debug] > Exec(idea-shell, None, None)
