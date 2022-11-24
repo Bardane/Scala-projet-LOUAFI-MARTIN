@@ -22,7 +22,7 @@ C.2.3 Choosing Reports will display the following (possibly through a menu):
 If you get the job done (9pt) with a clean code (4pt), correct test coverage (2pt) you'll have up to 15/20.
 
 OPTIONAL PART
-O.1) In 2.2 make the name matching partial/fuzzy. e.g. entering zimb will result in Zimbabwe (2pt)
+O.1) In 2.2 make the name matching partial/fuzzy. e.g. entering zimb will result in Zimbabwe (2pt)  
 O.2) Use database (in memory for the exercice like h2,sqlite) (4pt)
 O.3) Do a GUI (6pt)
 O.4) provide a rest API (4pt)
