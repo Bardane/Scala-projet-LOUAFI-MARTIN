@@ -1,5 +1,5 @@
 package service
 
-class CSV {
+class csvParser {
 
 }
