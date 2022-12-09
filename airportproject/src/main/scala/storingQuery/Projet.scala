@@ -65,21 +65,34 @@ object Projet {
 
     val runwayCountry : List[String] = countryFile.countryList.flatMap{
       country =>
-        val head4 : String = s"    - ${country.Name().get} :\n"
+        val countryNameStr : String = s"    - ${country.Name().get} :\n"
         val runwayNum : List[String] =
           fullMap.get(country.Code().get)
             .get
             .flatMap{x => x._2}
-            .filter{runway.getColumn(5) != Some("Unknown")}
+            .filter{runway => runway.getColumn(5) != Some("Unknown")}
             .groupBy{runway => runway.getColumn(5)}
             .mapValues(_.size)
             .toList
             .map(x => s"        - ${x._1.get} (nb = ${x._2})\n")
 
-        head4::runwayNum
+        countryNameStr::runwayNum
     }
+    val runwayCountryNum = head3::runwayCountry
 
-    val run
+    val head4 : String = "The top 10 most common runway latitude: \n"
+    val mostCommonLatitude : List[String] =
+      head4::runwayFile
+        .runwayList
+        .filter{runway => runway.getColumn(9) != Some("Unknown")}
+        .groupBy(runway => runway.getColumn(5))
+        .maValues(_.size)
+        .toList
+        .sortWith(_._2 > _._2)
+        .take(10)
+        .map(x => s"    - ${x._1.get} (nb = ${x._2})\n"))
+
+    highestAirports:::lowestAirports:::runwayCountry:::mostCommonLatitude
   }
 }
 
