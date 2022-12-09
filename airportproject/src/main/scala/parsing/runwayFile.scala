@@ -2,7 +2,7 @@ package parsing
 import model.Runway
 import model.Runway.airportId
 
-class runwayFile (filepath: String) extends csvFile(filepath) {
+case class runwayFile(filepath: String) extends csvFile(filepath) {
   val runways = data.map(Runway(_))
 
   val runwaysMap: Map[String, List[Runway]] = runways.groupBy(airportId(_).get)
