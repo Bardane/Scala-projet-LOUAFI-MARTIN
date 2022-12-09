@@ -1,7 +1,8 @@
 package parsing
-import scala.collection.mutable.HashMap
 import model.Country
 import model.Country.{countryCode, countryName}
+
+import scala.collection.mutable.HashMap
 
 case class countryFile(filepath: String) extends csvFile(filepath){
   val countries = data.map(Country(_))

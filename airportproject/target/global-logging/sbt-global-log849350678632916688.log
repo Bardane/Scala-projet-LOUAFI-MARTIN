@@ -1,0 +1,144 @@
+[debug] > Exec(early(addDefaultCommands), None, None)
+[debug] > Exec(addDefaultCommands, None, None)
+[debug] > Exec(early(initialize), None, None)
+[debug] > Exec(initialize, None, None)
+[debug] > Exec(early(addPluginSbtFile="""C:\Users\adaml\AppData\Local\Temp\idea.sbt"""), None, None)
+[debug] > Exec(addPluginSbtFile="""C:\Users\adaml\AppData\Local\Temp\idea.sbt""", None, None)
+[debug] > Exec(boot, None, None)
+[debug] > Exec(writeSbtVersion, None, None)
+[debug] > Exec(reload, None, None)
+[debug] > Exec(sbtStashOnFailure, None, None)
+[debug] > Exec(onFailure loadFailed, None, None)
+[debug] > Exec(loadp, None, None)
+[info] welcome to sbt 1.7.2 (AdoptOpenJDK Java 1.8.0_292)
+[debug]       Load.loadUnit: plugins took 72.4166ms
+[debug]       Load.loadUnit: defsScala took 0.2803ms
+[debug] [Loading] Scanning directory C:\Users\adaml\.sbt\1.0\plugins
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in C:\Users\adaml\.sbt\1.0\plugins, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 12.8743 ms
+[debug]           Load.resolveProject(global-plugins) took 41.7376ms
+[debug]         Load.loadTransitive: finalizeProject(Project(id global-plugins, base: C:\Users\adaml\.sbt\1.0\plugins, plugins: List(<none>))) took 75.253ms
+[debug] [Loading] Done in C:\Users\adaml\.sbt\1.0\plugins, returning: (global-plugins)
+[debug]       Load.loadUnit: loadedProjectsRaw took 92.4295ms
+[debug]       Load.loadUnit: cleanEvalClasses took 0.211ms
+[debug]     Load.loadUnit(file:/C:/Users/adaml/.sbt/1.0/plugins/, ...) took 172.0329ms
+[debug]   Load.apply: load took 409.7505ms
+[debug]   Load.apply: resolveProjects took 5.4005ms
+[debug]   Load.apply: finalTransforms took 45.4291ms
+[debug]   Load.apply: config.delegates took 5.7238ms
+[debug]   Load.apply: Def.make(settings)... took 365.0136ms
+[debug]   Load.apply: structureIndex took 103.5274ms
+[debug]   Load.apply: mkStreams took 1.5002ms
+[info] loading global plugins from C:\Users\adaml\.sbt\1.0\plugins
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug] Load.defaultLoad until apply took 5276.7453ms
+[debug]           Load.loadUnit: plugins took 23.0927ms
+[debug]           Load.loadUnit: defsScala took 0.0025ms
+[debug] [Loading] Scanning directory C:\Users\adaml\OneDrive - Efrei\Functional_Prog\Scala-projet-LOUAFI-MARTIN\airportproject\project
+[debug]             Load.loadUnit: mkEval took 6.41ms
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in C:\Users\adaml\OneDrive - Efrei\Functional_Prog\Scala-projet-LOUAFI-MARTIN\airportproject\project, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 1.4474 ms
+[info] loading settings for project airportproject-build from idea.sbt ...
+[debug]               Load.resolveProject(airportproject-build) took 2.1801ms
+[debug]             Load.loadTransitive: finalizeProject(Project(id airportproject-build, base: C:\Users\adaml\OneDrive - Efrei\Functional_Prog\Scala-projet-LOUAFI-MARTIN\airportproject\project, plugins: List(<none>))) took 4.0018ms
+[debug] [Loading] Done in C:\Users\adaml\OneDrive - Efrei\Functional_Prog\Scala-projet-LOUAFI-MARTIN\airportproject\project, returning: (airportproject-build)
+[debug]           Load.loadUnit: loadedProjectsRaw took 2159.29ms
+[debug]           Load.loadUnit: cleanEvalClasses took 7.7257ms
+[debug]         Load.loadUnit(file:/C:/Users/adaml/OneDrive%20-%20Efrei/Functional_Prog/Scala-projet-LOUAFI-MARTIN/airportproject/project/, ...) took 2191.2706ms
+[debug]       Load.apply: load took 2192.8275ms
+[debug]       Load.apply: resolveProjects took 0.0937ms
+[debug]       Load.apply: finalTransforms took 6.4214ms
+[debug]       Load.apply: config.delegates took 0.2707ms
+[debug]       Load.apply: Def.make(settings)... took 58.2667ms
+[debug]       Load.apply: structureIndex took 24.1944ms
+[debug]       Load.apply: mkStreams took 0.0023ms
+[info] loading project definition from C:\Users\adaml\OneDrive - Efrei\Functional_Prog\Scala-projet-LOUAFI-MARTIN\airportproject\project
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[warn] Unrecognized repository Scala Plugin Bundled Repository, ignoring it
+[warn] Unrecognized repository Scala Plugin Bundled Repository, ignoring it
+[debug]     Load.loadUnit: plugins took 3445.9487ms
+[debug]     Load.loadUnit: defsScala took 0.0028ms
+[debug] [Loading] Scanning directory C:\Users\adaml\OneDrive - Efrei\Functional_Prog\Scala-projet-LOUAFI-MARTIN\airportproject
+[debug]       Load.loadUnit: mkEval took 0.2811ms
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in C:\Users\adaml\OneDrive - Efrei\Functional_Prog\Scala-projet-LOUAFI-MARTIN\airportproject, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(org.jetbrains.sbt.StructurePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(org.jetbrains.sbt.IdeaShellPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(org.jetbrains.sbt.indices.SbtIntellijIndicesPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(org.jetbrains.sbt.StructurePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(org.jetbrains.sbt.IdeaShellPlugin)))
+[debug] Clause(And(Set(Atom(sbt.plugins.CorePlugin), Atom(sbt.plugins.JvmPlugin))),Set(Atom(org.jetbrains.sbt.indices.SbtIntellijIndicesPlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.SemanticdbPlugin,org.jetbrains.sbt.indices.SbtIntellijIndicesPlugin,sbt.plugins.JUnitXmlReportPlugin,org.jetbrains.sbt.IdeaShellPlugin,org.jetbrains.sbt.StructurePlugin,sbt.plugins.MiniDependencyTreePlugin)
+[debug] Plugins.deducer#function took 2.1932 ms
+[info] loading settings for project airportproject from build.sbt ...
+[debug]         Load.resolveProject(airportproject) took 31.2584ms
+[debug]       Load.loadTransitive: finalizeProject(Project(id airportproject, base: C:\Users\adaml\OneDrive - Efrei\Functional_Prog\Scala-projet-LOUAFI-MARTIN\airportproject, plugins: List(<none>))) took 35.115ms
+[debug] [Loading] Done in C:\Users\adaml\OneDrive - Efrei\Functional_Prog\Scala-projet-LOUAFI-MARTIN\airportproject, returning: (airportproject)
+[debug]     Load.loadUnit: loadedProjectsRaw took 1130.3266ms
+[debug]     Load.loadUnit: cleanEvalClasses took 14.662ms
+[debug]   Load.loadUnit(file:/C:/Users/adaml/OneDrive%20-%20Efrei/Functional_Prog/Scala-projet-LOUAFI-MARTIN/airportproject/, ...) took 4591.9331ms
+[debug] Load.apply: load took 4593.4852ms
+[debug] Load.apply: resolveProjects took 0.0972ms
+[debug] Load.apply: finalTransforms took 23.8666ms
+[debug] Load.apply: config.delegates took 0.3351ms
+[debug] Load.apply: Def.make(settings)... took 69.5736ms
+[debug] Load.apply: structureIndex took 16.0552ms
+[debug] Load.apply: mkStreams took 0.0047ms
+[info] set current project to airportProject (in build file:/C:/Users/adaml/OneDrive%20-%20Efrei/Functional_Prog/Scala-projet-LOUAFI-MARTIN/airportproject/)
+[debug] > Exec(sbtPopOnFailure, None, None)
+[debug] > Exec(resumeFromFailure, None, None)
+[debug] > Exec(notifyUsersAboutShell, None, None)
+[debug] > Exec(iflast shell, None, None)
+[debug] > Exec(; set ideaPort in Global := 63032 ; idea-shell, None, None)
+[debug] > Exec(set ideaPort in Global := 63032, None, None)
+[info] Defining Global / ideaPort
+[info] The new value will be used by Compile / compile, Test / compile
+[debug] Defining 
+[debug] 	Global / ideaPort
+[debug] 
+[debug] The new value will be used by 
+[debug] 	Compile / compile
+[debug] 	Test / compile
+[info] Reapplying settings...
+[info] set current project to airportProject (in build file:/C:/Users/adaml/OneDrive%20-%20Efrei/Functional_Prog/Scala-projet-LOUAFI-MARTIN/airportproject/)
+[debug] > Exec(idea-shell, None, None)
