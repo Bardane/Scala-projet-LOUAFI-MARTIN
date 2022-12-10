@@ -1,15 +1,16 @@
 package parsing
 import model.Country
+import model.Country.{countryCode, countryName}
 
 import scala.collection.mutable.HashMap
 
-case class CountryFile(filepath: String){
-  val countries = CSV.read(filepath, Country.fromCsvLine, ",")
+case class countryFile(filepath: String) extends csvFile(filepath){
+  val countries = data.map(Country(_))
 
-  """val countriesMap: HashMap[String, Country] = HashMap()
+  val countriesMap: HashMap[String, Country] = HashMap()
   val countriesIdMap: HashMap[String, String] = HashMap()
 
-  def loadCountries(): Unit = countries.map(country => countriesMap.addOne(country.countryCode -> country))
+  def loadCountries(): Unit = countries.map(country => countriesMap.addOne(countryCode(country).get -> country))
   def loadCountryIds(): Unit = countries.map(country => countriesIdMap.addOne(countryName(country).get -> countryCode(country).get))
 
   def getCountryById(countryId: String): Option[Country] = countriesMap.get(countryId)
@@ -22,6 +23,6 @@ case class CountryFile(filepath: String){
   }
 
   loadCountries()
-  loadCountryIds()"""
+  loadCountryIds()
 
 }
