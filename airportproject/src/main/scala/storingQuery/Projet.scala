@@ -1,10 +1,24 @@
 package storingQuery
+import parsing._
+import model._
+import collection.mutable.HashMap
 
 case class Projet(){
-
+  import Projet._
+  def askQuery(str: String): List[String] = Query(str)
+  def showReports(): List[String] = Report()
 }
 
 object Projet {
+
+  val countryProj = countryFile("countries.csv")
+  val runwayProj = runwayFile("countries.csv")
+  val airportProj = airportFile("airports.csv")
+
+  val fullMap : HashMap[String, List[(Airport, List[Runway])]] = HashMap()
+  fullMapInit()
+
+
 
   def Query(countryCodeOrName: String): List[String]=
   {
