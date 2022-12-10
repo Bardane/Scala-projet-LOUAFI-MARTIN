@@ -1,9 +1,21 @@
 package model
 
-case class Country(row: String) extends csvRow(row)
+import scala.util.Try
+case class Country(countryCode: String, countryName: String)
 
 object Country {
-  def countryCode(country: Country): Option[String] = country.getColumn(1)
-  def countryName(country: Country): Option[String] = country.getColumn(2)
+  def fromCsvLine(line: Array[String]): Option[Country] = {
+    line.length match {
+      case 5 | 6 => parseCountry(line)
+      case _ => None
+    }
+  }
+  def parseCountry(line : Array[String]): Option[Country] = {
+    (Try(line(1)).toOption, Try(line(2)).toOption) match {
+      case (Some(countryCode), Some(countryName)) => Some(Country(countryCode, countryName))
+      case _ => None
+    }
+  }
 }
+
 
