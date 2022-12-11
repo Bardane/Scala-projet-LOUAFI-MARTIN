@@ -1,7 +1,5 @@
 package parsing
-
 import model.Airport
-
 
 case class AirportFile(filepath: String){
   val airports = CSV.read(filepath, Airport.fromCsvLine, ",")
