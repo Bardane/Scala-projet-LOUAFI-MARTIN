@@ -2,7 +2,7 @@ package model
 
 import scala.util.Try
 
-case class Runway(airportId: String, runwayType: String, runwayLatitude: String)
+case class Runway(airportId: String, runwaySurface: String, runwayLatitude: String)
 
 object Runway {
   def fromCsvLine(line: Array[String]): Option[Runway] = {
