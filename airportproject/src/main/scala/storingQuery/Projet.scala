@@ -11,17 +11,20 @@ case class Projet(){
 
 object Projet {
 
-  val countryFileProj = countryFile("countries.csv")
-  val runwayFileProj = runwayFile("countries.csv")
-  val airportFileProj = airportFile("airports.csv")
+  val countryFileProj = CountryFile("./././resources/countries.csv")
+  val runwayFileProj = RunwayFile("./././resources/runways.csv")
+  val airportFileProj = AirportFile("./././resources/airports.csv")
 
-  def fullMapInit() : Unit = {
-    countryFileProj.countryList.map{country =>
-      val listAirport = airportFileProj.AirportViaCountryCode(country.Code())
+
+  val fullMap : HashMap[String, List[(Airport, List[Runway])]] = HashMap()
+
+  def fullMapInit(): Unit = {
+    countryFileProj.countries.map { country =>
+      val listAirport = airportFileProj.getAirportByCountryCode(country.countryCode)
       listAirport.isEmpty match {
         case false =>
-          val listAirport2 = listAirport.map{ airport =>
-            val runwayList = runwayFileProj.RunwaysViaAirportRef(airport.Id())
+          val listAirport2 = listAirport.map { airport =>
+            val runwayList = runwayFileProj.getRunwayByAirport(airport.airportId)
             runwayList.isEmpty match {
               case true => (airport, List())
               case false => (airport, runwayList)
@@ -30,22 +33,17 @@ object Projet {
           fullMap.put(country.Code(), listAirport2)
         case true => fullMap.put(country.Code(), List())
       }
-
     }
   }
 
-  val fullMap : HashMap[String, List[(Airport, List[Runway])]] = HashMap()
   fullMapInit()
 
   def getCountryInput(input: String): Option[Country] = {
     input.length match {
-      case 2 => countryFileProj.GetCountryFromCode(input)
-      case _ => countryFileProj.GetCountryFromName(input)
+      case 2 => countryFileProj.getCountryByCode(input)
+      case _ => countryFileProj.getCountryByName(input)
     }
   }
-
-
-
 
   def Query(countryCodeOrName: String): List[String]=
   {
@@ -55,11 +53,11 @@ object Projet {
       case true => List(s"${countryCodeOrName} country code or name does not exist ")
       case false =>
         val head : String = s"Airports and runways for ${
-          countryExist.Name()
+          countryExist.map(x => x.countryName)
         } : \n"
 
         val tail : List[String] =
-          fullMap.get(countryExist.Code())
+          fullMap.get(countryExist.map(x => x.countryCode))
             .flatMap{
             airportRunways =>
               val airport: String = airportRunways
@@ -73,10 +71,10 @@ object Projet {
 
   def Report(): List[String]=
   {
-    val countryAirport = countryFileProj.countryList
+    val countryAirport = countryFileProj.countries
       .map{country =>
-        val airportCode = airportFile.getAirportViaCode(country.Code())
-        airpotCode.isEmpty match {
+        val airportCode = airportFileProj.getAirportByCountryCode(country.countryCode)
+        airportCode.isEmpty match {
           case true => (country, 0)
           case false => (country, airportCode.size)
         }
@@ -88,7 +86,7 @@ object Projet {
       head1::countryAirport
         .take(10)
         .map{
-          x => s"    - ${x._1.Name()} with ${x._2}\n"
+          x => s"    - ${x._1.countryName} with ${x._2}\n"
         }
 
     val head2 : String = "10 countries with lowest number of airports (with count):\n"
@@ -96,19 +94,19 @@ object Projet {
       head2 :: countryAirport
         .takeRight(10)
         .reverseMap {
-          x => s"    - ${x._1.Name()} with ${x._2}\n"
+          x => s"    - ${x._1.countryName} with ${x._2}\n"
         }
 
     val head3 : String = " Type of runways per country:\n"
 
-    val runwayCountry : List[String] = countryFileProj.countryList.flatMap{
+    val runwayCountry : List[String] = countryFileProj.countries.flatMap{
       country =>
-        val countryNameStr : String = s"    - ${country.Name()} :\n"
+        val countryNameStr : String = s"    - ${country.countryName} :\n"
         val runwayNum : List[String] =
-          fullMap.get(country.Code())
+          fullMap.get(country.countryCode)
             .flatMap{x => x._2}
-            .filter{runway => runway.getColumn(5) != Some("Unknown")}
-            .groupBy{runway => runway.getColumn(5)}
+            .filter{runway => runway.runwayType != ""}
+            .groupBy{runway => runway.runwayType}
             .mapValues(_.size)
             .toList
             .map(x => s"        - ${x._1} (nb = ${x._2})\n")
@@ -119,8 +117,8 @@ object Projet {
 
     val head4 : String = "The top 10 most common runway latitude: \n"
     val mostCommonLatitude : List[String] =
-      head4::runwayFile
-        .runwayList
+      head4::runwayFileProj
+        .runways
         .filter{runway => runway.getColumn(9) != Some("Unknown")}
         .groupBy(runway => runway.getColumn(5))
         .maValues(_.size)
