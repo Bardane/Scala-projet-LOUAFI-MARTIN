@@ -1,6 +1,6 @@
 import parsing.{CountryFile, AirportFile, RunwayFile}
 
-object Test extends App {
+object Dev extends App {
 //  val countries = CountryFile("./././resources/countries.csv")
 //  println(countries.countries)
 //  println(countries.getCountryByCode("FR"))
