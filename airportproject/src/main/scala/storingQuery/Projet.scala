@@ -11,18 +11,45 @@ case class Projet(){
 
 object Projet {
 
-  val countryProj = countryFile("countries.csv")
-  val runwayProj = runwayFile("countries.csv")
-  val airportProj = airportFile("airports.csv")
+  val countryFileProj = countryFile("countries.csv")
+  val runwayFileProj = runwayFile("countries.csv")
+  val airportFileProj = airportFile("airports.csv")
+
+  def fullMapInit() : Unit = {
+    countryFileProj.countryList.map{country =>
+      val listAirport = airportFileProj.AirportViaCountryCode(country.Code())
+      listAirport.isEmpty match {
+        case false =>
+          val listAirport2 = listAirport.map{ airport =>
+            val runwayList = runwayFileProj.RunwaysViaAirportRef(airport.Id())
+            runwayList.isEmpty match {
+              case true => (airport, List())
+              case false => (airport, runwayList)
+            }
+          }
+          fullMap.put(country.Code(), listAirport2)
+        case true => fullMap.put(country.Code(), List())
+      }
+
+    }
+  }
 
   val fullMap : HashMap[String, List[(Airport, List[Runway])]] = HashMap()
   fullMapInit()
+
+  def getCountryInput(input: String): Option[Country] = {
+    input.length match {
+      case 2 => countryFileProj.GetCountryFromCode(input)
+      case _ => countryFileProj.GetCountryFromName(input)
+    }
+  }
+
 
 
 
   def Query(countryCodeOrName: String): List[String]=
   {
-    val countryExist : Option[Country] = getCountry(countryCodeOrName.replace("\"",""))
+    val countryExist : Option[Country] = getCountryInput(countryCodeOrName.replace("\"",""))
     countryExist.isEmpty match
     {
       case true => List(s"${countryCodeOrName} country code or name does not exist ")
@@ -46,7 +73,7 @@ object Projet {
 
   def Report(): List[String]=
   {
-    val countryAirport = countryFile.countryList
+    val countryAirport = countryFileProj.countryList
       .map{country =>
         val airportCode = airportFile.getAirportViaCode(country.Code())
         airpotCode.isEmpty match {
@@ -74,7 +101,7 @@ object Projet {
 
     val head3 : String = " Type of runways per country:\n"
 
-    val runwayCountry : List[String] = countryFile.countryList.flatMap{
+    val runwayCountry : List[String] = countryFileProj.countryList.flatMap{
       country =>
         val countryNameStr : String = s"    - ${country.Name()} :\n"
         val runwayNum : List[String] =
