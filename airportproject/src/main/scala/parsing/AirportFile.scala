@@ -1,10 +1,11 @@
 package parsing
 import model.Airport
+import model.Airport.airportCountry
 
 case class AirportFile(filepath: String){
-  val airports = CSV.read(filepath, Airport.fromCsvLine, ",")
+  """val airports = data.map(Airport(_))
 
-  val airportsMap: Map[String, List[Airport]] = airports.groupBy(_.airportCountry)
+  val airportsMap: Map[String, List[Airport]] = airports.groupBy(airportCountry(_).get)
 
-  def getAirportByCountryCode(countryCode: String): Option[List[Airport]] = airportsMap.get(countryCode)
+  def getAirportByCountry(countryId: String): Option[List[Airport]] = airportsMap.get(countryId)"""
 }

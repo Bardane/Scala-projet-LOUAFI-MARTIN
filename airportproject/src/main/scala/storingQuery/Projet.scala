@@ -4,13 +4,13 @@ import model._
 import collection.mutable.HashMap
 
 case class Projet(){
- """ import Projet._
+ import Projet._
   def askQuery(str: String): List[String] = Query(str)
-  def showReports(): List[String] = Report()"""
+  def showReports(): List[String] = Report()
 }
 
 object Projet {
-"""
+
   val countryFileProj = countryFile("countries.csv")
   val runwayFileProj = runwayFile("countries.csv")
   val airportFileProj = airportFile("airports.csv")
@@ -130,7 +130,7 @@ object Projet {
         .map(x => s"    - ${x._1} (nb = ${x._2})\n"))
 
     highestAirports:::lowestAirports:::runwayCountry:::mostCommonLatitude
-  }"""
+  }
 }
 
 
