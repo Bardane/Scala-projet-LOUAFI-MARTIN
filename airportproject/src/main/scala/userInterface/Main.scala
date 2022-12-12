@@ -16,8 +16,14 @@ object Main {
     {
       println("Scala Airport Project")
 
-      def query(): Unit = {
+      def formatInput(input: String): String = input.length match
+        {
+        case 2 => input.toUpperCase
+        case _ => input.toLowerCase.capitalize
+      }
 
+      def query(): Unit = {
+        println("Enter a name of its code")
       }
     }
 

@@ -23,7 +23,7 @@ object Projet {
       val listAirport = airportFileProj.getAirportByCountryCode(country.countryCode)
       listAirport.isEmpty match {
         case false =>
-          val listAirport2 = listAirport.map { airport =>
+          val listAirport2 = listAirport.map {airport =>
             val runwayList = runwayFileProj.getRunwayByAirport(airport.airportId)
             runwayList.isEmpty match {
               case true => (airport, List())
@@ -104,9 +104,9 @@ object Projet {
         val countryNameStr : String = s"    - ${country.countryName} :\n"
         val runwayNum : List[String] =
           fullMap.get(country.countryCode)
-            .flatMap{x => x._2}
-            .filter{runway => runway.runwayType != ""}
-            .groupBy{runway => runway.runwayType}
+            .flatMap{x => x._3}
+            .filter{runway => runway.runwaySurface != ""}
+            .groupBy{runway => runway.runwaySurface}
             .mapValues(_.size)
             .toList
             .map(x => s"        - ${x._1} (nb = ${x._2})\n")
