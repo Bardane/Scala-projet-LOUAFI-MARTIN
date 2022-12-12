@@ -12,12 +12,18 @@ case class CountryFile(filepath: String){
   def loadCountries(): Unit = countries.map(country => countriesMap.addOne(country.countryCode -> country))
   def loadCountryIds(): Unit = countries.map(country => countriesIdMap.addOne(country.countryName -> country.countryCode))
 
-  def getCountryByCode(countryCode: String): Option[Country] = {
-    countriesMap.get(countryCode)
+  def getCountryByCode(countryCode: String): Country = {
+    countriesMap.get(countryCode) match {
+      case Some(country) => countriesMap(countryCode)
+      case None => Country("", "")
+    }
   }
 
-  def getCountryByName(countryName: String): Option[Country] = {
-    countriesIdMap.get(countryName).flatMap(getCountryByCode)
+  def getCountryByName(countryName: String): Country = {
+    countriesIdMap.get(countryName) match {
+      case Some(country) => getCountryByCode(countriesIdMap(countryName))
+      case None => Country("", "")
+    }
   }
 
   loadCountries()
