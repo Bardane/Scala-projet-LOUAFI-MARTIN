@@ -5,8 +5,8 @@ import collection.mutable.HashMap
 
 case class Projet(){
  import Projet._
-  def askQuery(str: String): List[String] = Query(str)
-  def showReports(): List[String] = Report()
+  def askQuery(str: String): String = Query(str)
+  //def showReports(): List[String] = Report()
 }
 
 object Projet {
@@ -16,60 +16,47 @@ object Projet {
   val airportFileProj = AirportFile("./././resources/airports.csv")
 
 
-  val fullMap : HashMap[String, List[(Airport, List[Runway])]] = HashMap()
+  val fullMap : HashMap[Country, List[HashMap[Airport, List[Runway]]]] = HashMap()
 
   def fullMapInit(): Unit = {
     countryFileProj.countries.map { country =>
       val listAirport = airportFileProj.getAirportByCountryCode(country.countryCode)
       listAirport.isEmpty match {
         case false =>
-          val listAirport2 = listAirport.map {airport =>
+          val listAirport2 = listAirport.map{ airport =>
             val runwayList = runwayFileProj.getRunwayByAirport(airport.airportId)
-            runwayList.isEmpty match {
-              case true => (airport, List())
-              case false => (airport, runwayList)
-            }
+            HashMap(airport -> runwayList)
           }
-          fullMap.put(country.Code(), listAirport2)
-        case true => fullMap.put(country.Code(), List())
+          fullMap.put(country, listAirport2)
+        case true => fullMap.put(country, List())
       }
     }
   }
 
   fullMapInit()
 
-  def getCountryInput(input: String): Option[Country] = {
+  def getCountryInput(input: String): Country = {
     input.length match {
       case 2 => countryFileProj.getCountryByCode(input)
       case _ => countryFileProj.getCountryByName(input)
     }
   }
 
-  def Query(countryCodeOrName: String): List[String]=
+  def Query(countryCodeOrName: String): String=
   {
-    val countryExist : Option[Country] = getCountryInput(countryCodeOrName.replace("\"",""))
-    countryExist.isEmpty match
+    val countryExist : Country = getCountryInput(countryCodeOrName.replace("\"",""))
+    countryExist.countryName match
     {
-      case true => List(s"${countryCodeOrName} country code or name does not exist ")
-      case false =>
-        val head : String = s"Airports and runways for ${
-          countryExist.map(x => x.countryName)
-        } : \n"
-
-        val tail : List[String] =
-          fullMap.get(countryExist.map(x => x.countryCode))
-            .flatMap{
-            airportRunways =>
-              val airport: String = airportRunways
-                ._1
-                .Print() + "\n"
-              airport::airportRunways._2.map{runway.Print() + "\n"}
-          }
-        head::tail
+      case "" => "Wrong Country"
+      case _ =>
+        //val head : String = s"Airports and runways for ${countryExist.countryName} : \n"
+        val tail : String =
+          s" ${fullMap(countryExist)}"
+        tail
     }
   }
 
-  def Report(): List[String]=
+  def Report() =
   {
     val countryAirport = countryFileProj.countries
       .map{country =>
@@ -93,19 +80,17 @@ object Projet {
     val lowestAirports: List[String] =
       head2 :: countryAirport
         .takeRight(10)
-        .reverseMap {
+        .map{
           x => s"    - ${x._1.countryName} with ${x._2}\n"
         }
 
-    val head3 : String = " Type of runways per country:\n"
+   """ val head3 : String = " Type of runways per country:\n"
 
     val runwayCountry : List[String] = countryFileProj.countries.flatMap{
       country =>
         val countryNameStr : String = s"    - ${country.countryName} :\n"
         val runwayNum : List[String] =
-          fullMap.get(country.countryCode)
-            .flatMap{x => x._3}
-            .filter{runway => runway.runwaySurface != ""}
+          fullMap(country)(0)
             .groupBy{runway => runway.runwaySurface}
             .mapValues(_.size)
             .toList
@@ -125,9 +110,11 @@ object Projet {
         .toList
         .sortWith(_._2 > _._2)
         .take(10)
-        .map(x => s"    - ${x._1} (nb = ${x._2})\n"))
+        .map(x => s"    - ${x._1} (nb = ${x._2})\n"))"""
 
-    highestAirports:::lowestAirports:::runwayCountry:::mostCommonLatitude
+    highestAirports:::lowestAirports
+
+    //:::runwayCountry:::mostCommonLatitude
   }
 }
 

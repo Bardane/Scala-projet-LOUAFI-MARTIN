@@ -13,4 +13,6 @@ case class AirportFile(filepath: String){
       case None => List(Airport("", ""))
     }
   }
+
+
 }
