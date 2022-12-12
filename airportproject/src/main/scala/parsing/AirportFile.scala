@@ -1,4 +1,5 @@
 package parsing
+
 import model.Airport
 
 case class AirportFile(filepath: String){

@@ -1,4 +1,5 @@
 package parsing
+
 import model.Runway
 
 case class RunwayFile(filepath: String) {

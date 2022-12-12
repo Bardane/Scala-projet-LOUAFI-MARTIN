@@ -1,12 +1,12 @@
 import parsing.{CountryFile, AirportFile, RunwayFile}
 
 object Dev extends App {
-  val countries = CountryFile("./././resources/countries.csv")
-  println(countries.countries)
-  println(countries.getCountryByCode("XY"))
+//  val countries = CountryFile("./././resources/countries.csv")
+//  println(countries.countries)
+//  println(countries.getCountryByCode("FR"))
 
-//  val airports = AirportFile("./././resources/airports.csv")
-//  println(airports.getAirportByCountryCode("FR"))
+  val airports = AirportFile("./././resources/airports.csv")
+  println(airports.getAirportByCountryCode("FR"))
 //
 //  val runways = RunwayFile("./././resources/runways.csv")
 //  val lfpg_runways = runways.getRunwayByAirport("LFPG")
