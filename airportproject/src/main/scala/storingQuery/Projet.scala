@@ -112,6 +112,7 @@ object Projet {
         .take(10)
         .map(x => s"    - ${x._1} (nb = ${x._2})\n"))"""
 
+
     highestAirports:::lowestAirports
 
     //:::runwayCountry:::mostCommonLatitude

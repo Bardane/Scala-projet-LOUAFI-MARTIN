@@ -13,22 +13,13 @@ object Main extends App {
   val airportFileProj = storingQueryApp.airportFileProj
 
 
-  println("Scala Airport Project")
-  val queryOrReports = readLine("Type q for query or r for reports\n")
-
-  def formatInput(input: String): String = input.length match
-    {
-    case 2 => input.toUpperCase
-    case _ => input.toLowerCase.capitalize
-  }
+  selectMenu()
 
 
-  if (queryOrReports == "q") {
-    query()
-  }
-  else if (queryOrReports == "r"){
-    reports()
-  }
+
+
+
+  /** Functions */
 
   def query(): Unit = {
     val countryCodeOrName = formatInput(readLine("Type the Country \n"))
@@ -38,10 +29,39 @@ object Main extends App {
           query()
         case _ => println(storingQueryApp.Query(countryCodeOrName))
       }
+    val mainMenu = readLine("Press enter to go back to menu")
+    mainMenu match {
+      case _ => selectMenu()
+    }
   }
 
-  def reports() = {
+  def reports(): Unit = {
     println(storingQueryApp.Report())
+    val mainMenu = readLine("Press enter to go back to menu")
+    mainMenu match {
+      case _ => selectMenu()
+    }
+  }
+
+  def formatInput(input: String): String = input.length match {
+    case 2 => input.toUpperCase
+    case _ => input.toLowerCase.capitalize
+  }
+
+  def selectMenu(): Unit = {
+    println("_____________________")
+    println("Scala Airport Project")
+    println("1. Query")
+    println("2. Reports ")
+    println("Q. Quit ")
+    val queryOrReports = formatInput(readLine("Enter Your Choice: "))
+    queryOrReports match {
+      case "1" => query()
+      case "2" => reports()
+      case "Q" => println("Quitting the app...")
+      case _ => println("This is not a valid option, please retype\n")
+        selectMenu()
+    }
   }
 
 }
