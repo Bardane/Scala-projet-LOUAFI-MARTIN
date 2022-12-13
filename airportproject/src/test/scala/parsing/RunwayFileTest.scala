@@ -5,5 +5,6 @@ import org.scalatest.funsuite.AnyFunSuite
 class RunwayFileTest extends AnyFunSuite {
   test("RunwayFile.getRunwayByAirport") {
     assert(RunwayFile("./././resources/runways.csv").getRunwayByAirport("LFPG").size == 4)
+    assert(RunwayFile("./././resources/runways.csv").getRunwayByAirport("XY")(0).airportId == "")
   }
 }
