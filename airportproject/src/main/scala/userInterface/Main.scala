@@ -16,9 +16,6 @@ object Main extends App {
   selectMenu()
 
 
-
-
-
   /** Functions */
 
   def query(): Unit = {
@@ -36,7 +33,7 @@ object Main extends App {
   }
 
   def reports(): Unit = {
-    println(storingQueryApp.Report())
+    print(storingQueryApp.Report())
     val mainMenu = readLine("Press enter to go back to menu")
     mainMenu match {
       case _ => selectMenu()

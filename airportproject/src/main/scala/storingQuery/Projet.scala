@@ -48,11 +48,7 @@ object Projet {
     countryExist.countryName match
     {
       case "" => "Wrong Country"
-      case _ =>
-        //val head : String = s"Airports and runways for ${countryExist.countryName} : \n"
-        val tail : String =
-          s" ${fullMap(countryExist)}"
-        tail
+      case _ => s" ${fullMap(countryExist)}"
     }
   }
 
@@ -84,21 +80,7 @@ object Projet {
           x => s"    - ${x._1.countryName} with ${x._2}\n"
         }
 
-   """ val head3 : String = " Type of runways per country:\n"
-
-    val runwayCountry : List[String] = countryFileProj.countries.flatMap{
-      country =>
-        val countryNameStr : String = s"    - ${country.countryName} :\n"
-        val runwayNum : List[String] =
-          fullMap(country)(0)
-            .groupBy{runway => runway.runwaySurface}
-            .mapValues(_.size)
-            .toList
-            .map(x => s"        - ${x._1} (nb = ${x._2})\n")
-
-        countryNameStr::runwayNum
-    }
-    val runwayCountryNum = head3::runwayCountry
+   """
 
     val head4 : String = "The top 10 most common runway latitude: \n"
     val mostCommonLatitude : List[String] =
@@ -112,9 +94,17 @@ object Projet {
         .take(10)
         .map(x => s"    - ${x._1} (nb = ${x._2})\n"))"""
 
+    def runwayTypesCountry(countryIso: String) = {
+      airportFileProj.getAirportByCountryCode(countryIso)
+        .flatMap{x => runwayFileProj.getRunwayByAirport(x.airportId)}
+        .groupBy(_.runwaySurface).mapValues(_.size).toList.sortBy(_._2).reverse
+    }
+    val head3 : String = "Type of runways per country:\n"
+    val listIso = countryFileProj.countries.map(_.countryCode)
+    val surfaceRunway = listIso.map(myListElement => (myListElement, runwayTypesCountry(myListElement)))
+    val surfaceRunwayHead = head3::surfaceRunway
 
-    highestAirports:::lowestAirports
-
+    highestAirports:::lowestAirports::surfaceRunwayHead
     //:::runwayCountry:::mostCommonLatitude
   }
 }
