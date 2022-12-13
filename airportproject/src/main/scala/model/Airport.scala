@@ -15,9 +15,5 @@ object Airport {
       case _ => None
     }
   }
-
-  def Print(): String = {
-    "pui"
-  }
 }
 

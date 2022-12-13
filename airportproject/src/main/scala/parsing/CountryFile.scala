@@ -3,11 +3,13 @@ package parsing
 import scala.collection.mutable.HashMap
 import model.Country
 
-case class CountryFile(filepath: String){
-  val countries = CSV.read(filepath, Country.fromCsvLine, ",")
+import scala.collection.mutable
 
-  val countriesMap: HashMap[String, Country] = HashMap()
-  val countriesIdMap: HashMap[String, String] = HashMap()
+case class CountryFile(filepath: String){
+  val countries: List[Country] = CSV.read(filepath, Country.fromCsvLine)
+
+  val countriesMap: mutable.HashMap[String, Country] = mutable.HashMap()
+  val countriesIdMap: mutable.HashMap[String, String] = mutable.HashMap()
 
   def loadCountries(): Unit = countries.map(country => countriesMap.addOne(country.countryCode -> country))
   def loadCountryIds(): Unit = countries.map(country => countriesIdMap.addOne(country.countryName -> country.countryCode))
