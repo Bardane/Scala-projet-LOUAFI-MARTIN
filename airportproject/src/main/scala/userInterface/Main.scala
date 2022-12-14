@@ -36,9 +36,9 @@ object Main extends App {
   }
 
   def reports(): Unit = {
-    println("Please select which "  + Console.MAGENTA +  "report " + Console.RESET + "you want to see")
+    println("Please select which "  + Console.BLUE +  "report " + Console.RESET + "you want to see")
     println(Console.MAGENTA + "1. Top 10 countries with most airports")
-    println(Console.BLUE + "2. Top 10 countries with least airports")
+    println(Console.GREEN + "2. Top 10 countries with least airports")
     println(Console.RED + "3. Type of runway surface per country " )
     println(Console.YELLOW + "4. Top 10 most common runway latitude" + Console.RESET)
     val choice = readLine("Enter Your Choice: ")
