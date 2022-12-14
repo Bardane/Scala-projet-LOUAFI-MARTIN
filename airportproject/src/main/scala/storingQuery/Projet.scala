@@ -65,19 +65,14 @@ object Projet {
       .sortWith(_._2 > _._2)
 
     val head1 : String = "10 countries with highest number of airports (with count):\n"
-    val highestAirports: List[String] =
-      head1::countryAirport
-        .take(10)
-        .map{
-          x => s"    - ${x._1.countryName} with ${x._2}\n"
-        }
+    val highestAirports: String = head1 + countryAirport.take(10).map{x => s"${x._1.countryName} with ${x._2}\n"}
 
     val head2 : String = "10 countries with lowest number of airports (with count):\n"
-    val lowestAirports: List[String] =
-      head2 :: countryAirport
+    val lowestAirports: String =
+      head2 + countryAirport
         .takeRight(10)
         .map{
-          x => s"    - ${x._1.countryName} with ${x._2}\n"
+          x => s"${x._1.countryName} with ${x._2}\n"
         }
 
 
@@ -89,11 +84,11 @@ object Projet {
     val head3 : String = "Type of runways per country:\n"
     val listIso = countryFileProj.countries.map(_.countryCode)
     val surfaceRunway = listIso.map(myListElement => (myListElement, runwayTypesCountry(myListElement)))
-    val surfaceRunwayHead = head3::surfaceRunway
+    val surfaceRunwayHead = head3 + surfaceRunway.map(x => s"${x._1}: ${x._2.map(_._1)}\n")
 
     val listRunwayLat = runwayFileProj.runways.map(_.runwayLatitude).groupBy(x => x).mapValues(_.size).toList.sortBy(_._2).reverse.take(10)
     val head4 : String = "Top 10 most common latitudes:\n"
-    val latitudeRunwayHead = head4::listRunwayLat
+    val latitudeRunwayHead = head4 + listRunwayLat
 
     choice match {
       case "1" => highestAirports
