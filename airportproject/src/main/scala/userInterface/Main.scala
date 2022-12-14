@@ -19,14 +19,17 @@ object Main extends App {
   /** Functions */
 
   def query(): Unit = {
-    val countryCodeOrName = formatInput(readLine("Type the Country \n"))
+    val countryCodeOrName = formatInput(readLine("Plesae type the Country " + Console.MAGENTA + "code"
+                                                                            + Console.RESET + " or "
+                                                                            + Console.MAGENTA + "name"
+                                                                            + Console.RESET + ": \n"))
       storingQueryApp.Query(countryCodeOrName) match {
         case "Wrong Country" =>
-          println("This country does not exist, \n")
+          println("This country does not exist \uD83D\uDE14 but let's retype it !\n")
           query()
         case _ => println(storingQueryApp.Query(countryCodeOrName))
       }
-    val mainMenu = readLine("Press enter to go back to menu")
+    val mainMenu = readLine(Console.GREEN + "Press enter to go back to menu")
     mainMenu match {
       case _ => selectMenu()
     }
@@ -46,18 +49,20 @@ object Main extends App {
   }
 
   def selectMenu(): Unit = {
-    println("_____________________")
+    println(Console.CYAN + "_____________________" + Console.RESET)
     println("Scala Airport Project")
-    println("1. Query")
-    println("2. Reports ")
-    println("Q. Quit ")
+    println(Console.MAGENTA + "1. Query")
+    println(Console.BLUE + "2. Reports ")
+    println(Console.RED +"Q. Quit " + Console.RESET)
     val queryOrReports = formatInput(readLine("Enter Your Choice: "))
     queryOrReports match {
       case "1" => query()
       case "2" => reports()
-      case "Q" => println("Quitting the app...")
-      case _ => println("This is not a valid option, please retype\n")
+      case "Q" => println(Console.GREEN + "Quitting the app...")
+      case _ =>
+        println(Console.RED +"This is not a valid option, please retype\n")
         selectMenu()
+
     }
   }
 

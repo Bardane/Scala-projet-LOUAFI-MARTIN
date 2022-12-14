@@ -104,6 +104,12 @@ object Projet {
     val surfaceRunway = listIso.map(myListElement => (myListElement, runwayTypesCountry(myListElement)))
     val surfaceRunwayHead = head3::surfaceRunway
 
+    """def mostCommonLattitude(): Unit = {
+      val latt_list = runwayFileProj.groupBy()
+    }"""
+
+    val listRunwayLat = countryFileProj.countries.map(_.countryCode)
+
     highestAirports:::lowestAirports::surfaceRunwayHead
     //:::runwayCountry:::mostCommonLatitude
   }
