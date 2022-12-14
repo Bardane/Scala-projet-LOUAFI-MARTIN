@@ -1,9 +1,19 @@
 package model
 
-case class Runway(row: String) extends csvRow(row)
+import scala.util.Try
+
+case class Runway(airportId: String, runwaySurface: String, runwayLatitude: String)
 
 object Runway {
-  def airportId(runway: Runway): Option[String] = runway.getColumn(2)
-  def runwayType(runway: Runway): Option[String] = runway.getColumn(5)
-  def runwayLatitude(runway: Runway): Option[String] = runway.getColumn(8)
+  def fromCsvLine(line: Array[String]): Option[Runway] = {
+    parseRunway(line)
+  }
+
+  def parseRunway(line: Array[String]): Option[Runway] = {
+    (Try(line(2)).toOption, Try(line(5)).toOption, Try(line(8)).toOption) match {
+      case (Some(airportId), Some(runwayType), Some(runwayLatitude)) => Some(Runway(airportId, runwayType, runwayLatitude))
+      case _ => None
+    }
+  }
 }
+

@@ -1,8 +1,19 @@
 package model
 
-case class Airport(row: String) extends csvRow(row)
+import scala.util.Try
+
+case class Airport(airportId: String, airportCountry: String)
 
 object Airport {
-  def airportId(airport: Airport): Option[String] = airport.getColumn(1)
-  def airportCountry(airport: Airport): Option[String] = airport.getColumn(8)
+  def fromCsvLine(line: Array[String]): Option[Airport] = {
+    parseAirport(line)
+  }
+
+  def parseAirport(line: Array[String]): Option[Airport] = {
+    (Try(line(1)).toOption, Try(line(8)).toOption) match {
+      case (Some(airportId), Some(airportCountry)) => Some(Airport(airportId, airportCountry))
+      case _ => None
+    }
+  }
 }
+
