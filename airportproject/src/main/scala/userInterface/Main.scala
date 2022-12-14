@@ -19,7 +19,7 @@ object Main extends App {
   /** Functions */
 
   def query(): Unit = {
-    val countryCodeOrName = formatInput(readLine("Plesae type the Country " + Console.MAGENTA + "code"
+    val countryCodeOrName = formatInput(readLine("Please type the Country " + Console.MAGENTA + "code"
                                                                             + Console.RESET + " or "
                                                                             + Console.MAGENTA + "name"
                                                                             + Console.RESET + ": \n"))
@@ -36,8 +36,22 @@ object Main extends App {
   }
 
   def reports(): Unit = {
-    print(storingQueryApp.Report())
-    val mainMenu = readLine("Press enter to go back to menu")
+    println("Please select which "  + Console.MAGENTA +  "report " + Console.RESET + "you want to see")
+    println(Console.MAGENTA + "1. Top 10 countries with most airports")
+    println(Console.BLUE + "2. Top 10 countries with least airports")
+    println(Console.RED + "3. Type of runway surface per country " )
+    println(Console.YELLOW + "4. Top 10 most common runway latitude" + Console.RESET)
+    val choice = readLine("Enter Your Choice: ")
+
+    choice match {
+      case "1" => println(storingQueryApp.Report("1"))
+      case "2" => println(storingQueryApp.Report("2"))
+      case "3" => println(storingQueryApp.Report("3"))
+      case "4" => println(storingQueryApp.Report("4"))
+      case _ => println("This is not a valid option \uD83D\uDE14 let's retype it ")
+        reports()
+    }
+    val mainMenu = readLine(Console.GREEN + "Press enter to go back to menu")
     mainMenu match {
       case _ => selectMenu()
     }

@@ -52,7 +52,7 @@ object Projet {
     }
   }
 
-  def Report() =
+  def Report(choice: String) =
   {
     val countryAirport = countryFileProj.countries
       .map{country =>
@@ -80,19 +80,6 @@ object Projet {
           x => s"    - ${x._1.countryName} with ${x._2}\n"
         }
 
-   """
-
-    val head4 : String = "The top 10 most common runway latitude: \n"
-    val mostCommonLatitude : List[String] =
-      head4::runwayFileProj
-        .runways
-        .filter{runway => runway.getColumn(9) != Some("Unknown")}
-        .groupBy(runway => runway.getColumn(5))
-        .maValues(_.size)
-        .toList
-        .sortWith(_._2 > _._2)
-        .take(10)
-        .map(x => s"    - ${x._1} (nb = ${x._2})\n"))"""
 
     def runwayTypesCountry(countryIso: String) = {
       airportFileProj.getAirportByCountryCode(countryIso)
@@ -104,14 +91,17 @@ object Projet {
     val surfaceRunway = listIso.map(myListElement => (myListElement, runwayTypesCountry(myListElement)))
     val surfaceRunwayHead = head3::surfaceRunway
 
-    """def mostCommonLattitude(): Unit = {
-      val latt_list = runwayFileProj.groupBy()
-    }"""
+    val listRunwayLat = runwayFileProj.runways.map(_.runwayLatitude).groupBy(x => x).mapValues(_.size).toList.sortBy(_._2).reverse.take(10)
+    val head4 : String = "Top 10 most common latitudes:\n"
+    val latitudeRunwayHead = head4::listRunwayLat
 
-    val listRunwayLat = countryFileProj.countries.map(_.countryCode)
+    choice match {
+      case "1" => highestAirports
+      case "2" => lowestAirports
+      case "3" => surfaceRunwayHead
+      case "4" => latitudeRunwayHead
+    }
 
-    highestAirports:::lowestAirports::surfaceRunwayHead
-    //:::runwayCountry:::mostCommonLatitude
   }
 }
 
